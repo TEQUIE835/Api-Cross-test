@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "gVAJcyHzOXQ=",
+  "dgSpecHash": "67KBt9dns0o=",
   "success": true,
-  "projectFilePath": "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Application/userManagement.Application.csproj",
+  "projectFilePath": "/home/bscharp/Escritorio/Api-Cross-test/userManagement.Application/userManagement.Application.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

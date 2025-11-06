@@ -106,3 +106,5 @@ $RECYCLE.BIN/
 # === Temporary ===
 *.tmp
 *.temp
+
+ca.pem

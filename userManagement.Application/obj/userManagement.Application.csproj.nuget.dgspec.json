@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Application/userManagement.Application.csproj": {}
+    "/home/bscharp/Escritorio/Api-Cross-test/userManagement.Application/userManagement.Application.csproj": {}
   },
   "projects": {
-    "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Application/userManagement.Application.csproj": {
+    "/home/bscharp/Escritorio/Api-Cross-test/userManagement.Application/userManagement.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Application/userManagement.Application.csproj",
+        "projectUniqueName": "/home/bscharp/Escritorio/Api-Cross-test/userManagement.Application/userManagement.Application.csproj",
         "projectName": "userManagement.Application",
-        "projectPath": "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Application/userManagement.Application.csproj",
-        "packagesPath": "/home/doc4am/.nuget/packages/",
-        "outputPath": "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Application/obj/",
+        "projectPath": "/home/bscharp/Escritorio/Api-Cross-test/userManagement.Application/userManagement.Application.csproj",
+        "packagesPath": "/home/bscharp/.nuget/packages/",
+        "outputPath": "/home/bscharp/Escritorio/Api-Cross-test/userManagement.Application/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/doc4am/.nuget/NuGet/NuGet.Config"
+          "/home/bscharp/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -26,8 +26,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Domain/userManagement.Domain.csproj": {
-                "projectPath": "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Domain/userManagement.Domain.csproj"
+              "/home/bscharp/Escritorio/Api-Cross-test/userManagement.Domain/userManagement.Domain.csproj": {
+                "projectPath": "/home/bscharp/Escritorio/Api-Cross-test/userManagement.Domain/userManagement.Domain.csproj"
               }
             }
           }
@@ -63,21 +63,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.304/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/home/bscharp/.dotnet/sdk/9.0.306/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Domain/userManagement.Domain.csproj": {
+    "/home/bscharp/Escritorio/Api-Cross-test/userManagement.Domain/userManagement.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Domain/userManagement.Domain.csproj",
+        "projectUniqueName": "/home/bscharp/Escritorio/Api-Cross-test/userManagement.Domain/userManagement.Domain.csproj",
         "projectName": "userManagement.Domain",
-        "projectPath": "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Domain/userManagement.Domain.csproj",
-        "packagesPath": "/home/doc4am/.nuget/packages/",
-        "outputPath": "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Domain/obj/",
+        "projectPath": "/home/bscharp/Escritorio/Api-Cross-test/userManagement.Domain/userManagement.Domain.csproj",
+        "packagesPath": "/home/bscharp/.nuget/packages/",
+        "outputPath": "/home/bscharp/Escritorio/Api-Cross-test/userManagement.Domain/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/doc4am/.nuget/NuGet/NuGet.Config"
+          "/home/bscharp/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -122,7 +122,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.304/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/home/bscharp/.dotnet/sdk/9.0.306/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
