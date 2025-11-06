@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "cj6yI991ecI=",
+  "success": true,
+  "projectFilePath": "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Api/userManagement.Api.csproj",
+  "expectedPackageFiles": [
+    "/home/doc4am/.nuget/packages/microsoft.aspnetcore.openapi/9.0.8/microsoft.aspnetcore.openapi.9.0.8.nupkg.sha512",
+    "/home/doc4am/.nuget/packages/microsoft.openapi/1.6.17/microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}

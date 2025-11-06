@@ -1,0 +1,268 @@
+{
+  "format": 1,
+  "restore": {
+    "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Api/userManagement.Api.csproj": {}
+  },
+  "projects": {
+    "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Api/userManagement.Api.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Api/userManagement.Api.csproj",
+        "projectName": "userManagement.Api",
+        "projectPath": "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Api/userManagement.Api.csproj",
+        "packagesPath": "/home/doc4am/.nuget/packages/",
+        "outputPath": "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Api/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/doc4am/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Application/userManagement.Application.csproj": {
+                "projectPath": "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Application/userManagement.Application.csproj"
+              },
+              "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Infrastructure/userManagement.Infrastructure.csproj": {
+                "projectPath": "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Infrastructure/userManagement.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[9.0.8, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.304/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Application/userManagement.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Application/userManagement.Application.csproj",
+        "projectName": "userManagement.Application",
+        "projectPath": "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Application/userManagement.Application.csproj",
+        "packagesPath": "/home/doc4am/.nuget/packages/",
+        "outputPath": "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Application/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/doc4am/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Domain/userManagement.Domain.csproj": {
+                "projectPath": "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Domain/userManagement.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.304/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Domain/userManagement.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Domain/userManagement.Domain.csproj",
+        "projectName": "userManagement.Domain",
+        "projectPath": "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Domain/userManagement.Domain.csproj",
+        "packagesPath": "/home/doc4am/.nuget/packages/",
+        "outputPath": "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Domain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/doc4am/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.304/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Infrastructure/userManagement.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Infrastructure/userManagement.Infrastructure.csproj",
+        "projectName": "userManagement.Infrastructure",
+        "projectPath": "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Infrastructure/userManagement.Infrastructure.csproj",
+        "packagesPath": "/home/doc4am/.nuget/packages/",
+        "outputPath": "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Infrastructure/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/doc4am/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Domain/userManagement.Domain.csproj": {
+                "projectPath": "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Domain/userManagement.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.304/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
