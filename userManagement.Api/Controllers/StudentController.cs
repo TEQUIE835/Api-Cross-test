@@ -22,8 +22,13 @@ public class StudentsController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<StudentDto>>> GetAll()
     {
-        var students = await _studentService.GetAllAsync();
-        return Ok(students);
+        try{
+            var students = await _studentService.GetAllAsync();
+            return Ok(students);
+        }
+        catch ( Exception e){
+            return BadRequest(e.Message);
+        }
     }
 
     
