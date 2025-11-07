@@ -20,11 +20,7 @@ public class AppDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
             .Build();
        
         var connectionString = configuration.GetConnectionString("Default");
-        var solutionRoot = Path.GetFullPath(Path.Combine(basePath, ".."));
-        var certPath = Path.Combine(solutionRoot, "Certs", "ca.pem");
-        
-        connectionString = connectionString.Replace("${CERT_PATH}", certPath);
-        
+     
         var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
         optionsBuilder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
         return new AppDbContext(optionsBuilder.Options);
