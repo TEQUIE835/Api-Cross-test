@@ -4,10 +4,10 @@ WORKDIR /src
 
 # Copiar archivos de proyecto primero (para cachear el restore)
 COPY *.sln ./
-COPY userManagement.Api/*.csproj orderManage.Api/
-COPY userManagement.Application/*.csproj orderManage.Application/
-COPY userManagement.Domain/*.csproj orderManage.Domain/
-COPY UserManagement.Infrastructure/*.csproj orderManage.Infrastructure/
+COPY userManagement.Api/*.csproj userManagement.Api/
+COPY userManagement.Application/*.csproj userManagement.Application/
+COPY userManagement.Domain/*.csproj userManagement.Domain/
+COPY UserManagement.Infrastructure/*.csproj userManagement.Infrastructure/
 COPY Certs /app/Certs
 
 RUN dotnet restore userManagement.sln
