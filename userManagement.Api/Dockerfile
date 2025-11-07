@@ -7,7 +7,7 @@ COPY *.sln ./
 COPY userManagement.Api/*.csproj userManagement.Api/
 COPY userManagement.Application/*.csproj userManagement.Application/
 COPY userManagement.Domain/*.csproj userManagement.Domain/
-COPY UserManagement.Infrastructure/*.csproj userManagement.Infrastructure/
+COPY userManagement.Infrastructure/*.csproj userManagement.Infrastructure/
 COPY Certs /app/Certs
 
 RUN dotnet restore userManagement.sln
