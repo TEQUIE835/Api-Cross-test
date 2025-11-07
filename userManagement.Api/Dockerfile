@@ -1,0 +1,27 @@
+# Etapa 1: build
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+
+# Copiar archivos de proyecto primero (para cachear el restore)
+COPY *.sln ./
+COPY userManagement.Api/*.csproj orderManage.Api/
+COPY userManagement.Application/*.csproj orderManage.Application/
+COPY userManagement.Domain/*.csproj orderManage.Domain/
+COPY UserManagement.Infrastructure/*.csproj orderManage.Infrastructure/
+
+RUN dotnet restore userManagement.sln
+
+# Copiar el resto del código
+COPY . .
+
+RUN dotnet publish userManagement.Api/userManagement.Api.csproj -c Release -o /app/publish /p:UseAppHost=false
+
+# Etapa 2: runtime
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
+WORKDIR /app
+COPY --from=build /app/publish .
+
+ENV ASPNETCORE_URLS=http://+:8080
+EXPOSE 8080
+
+ENTRYPOINT ["dotnet", "userManagement.Api.dll"]
