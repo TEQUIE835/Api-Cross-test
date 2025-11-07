@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using userManagement.Application.Interfaces.Auth;
@@ -22,15 +23,12 @@ builder.Services.AddSwaggerGen();
 
 // 2. Configuración de Base de Datos
 // Asume que el connection string 'Default' está en appsettings.json
-var certPath = "/app/Certs/ca.pem";
+// var certPath = "./Certs/ca.pem";
 
 var connectionString = Environment.GetEnvironmentVariable("MYSQL_CONNECTION_STRING")
     ?? builder.Configuration.GetConnectionString("Default");;
 Console.WriteLine($"🔗 Connection string: {connectionString}");
-if (!string.IsNullOrEmpty(certPath))
-{
-    connectionString = connectionString.Replace("${HOME}/Certs/ca.pem", certPath);
-}
+
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 36)));
@@ -42,6 +40,9 @@ builder.Services.AddOpenApi();
 
 //Inyeccion de dependencias --------------------------------------------------------------
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
+builder.Services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 
@@ -52,7 +53,7 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 
 
-// builder.Services.AddScoped<IAuthService, AuthService>();
+//builder.Services.AddScoped<IAuthService, AuthService>();
 
 // Configuración de Autenticación y Autorización--------------------------------------------
 

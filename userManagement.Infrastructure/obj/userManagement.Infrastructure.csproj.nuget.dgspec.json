@@ -1,31 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mcqui\\OneDrive\\Documents\\TRABAJOS C#\\ApiCrossTest\\Api-Cross-test\\userManagement.Infrastructure\\userManagement.Infrastructure.csproj": {}
+    "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Infrastructure/userManagement.Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mcqui\\OneDrive\\Documents\\TRABAJOS C#\\ApiCrossTest\\Api-Cross-test\\userManagement.Domain\\userManagement.Domain.csproj": {
+    "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Domain/userManagement.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mcqui\\OneDrive\\Documents\\TRABAJOS C#\\ApiCrossTest\\Api-Cross-test\\userManagement.Domain\\userManagement.Domain.csproj",
+        "projectUniqueName": "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Domain/userManagement.Domain.csproj",
         "projectName": "userManagement.Domain",
-        "projectPath": "C:\\Users\\mcqui\\OneDrive\\Documents\\TRABAJOS C#\\ApiCrossTest\\Api-Cross-test\\userManagement.Domain\\userManagement.Domain.csproj",
-        "packagesPath": "C:\\Users\\mcqui\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mcqui\\OneDrive\\Documents\\TRABAJOS C#\\ApiCrossTest\\Api-Cross-test\\userManagement.Domain\\obj\\",
+        "projectPath": "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Domain/userManagement.Domain.csproj",
+        "packagesPath": "/home/doc4am/.nuget/packages/",
+        "outputPath": "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Domain/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\mcqui\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/doc4am/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -75,40 +69,34 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Users\\mcqui\\.dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\mcqui\\OneDrive\\Documents\\TRABAJOS C#\\ApiCrossTest\\Api-Cross-test\\userManagement.Infrastructure\\userManagement.Infrastructure.csproj": {
+    "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Infrastructure/userManagement.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mcqui\\OneDrive\\Documents\\TRABAJOS C#\\ApiCrossTest\\Api-Cross-test\\userManagement.Infrastructure\\userManagement.Infrastructure.csproj",
+        "projectUniqueName": "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Infrastructure/userManagement.Infrastructure.csproj",
         "projectName": "userManagement.Infrastructure",
-        "projectPath": "C:\\Users\\mcqui\\OneDrive\\Documents\\TRABAJOS C#\\ApiCrossTest\\Api-Cross-test\\userManagement.Infrastructure\\userManagement.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\mcqui\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mcqui\\OneDrive\\Documents\\TRABAJOS C#\\ApiCrossTest\\Api-Cross-test\\userManagement.Infrastructure\\obj\\",
+        "projectPath": "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Infrastructure/userManagement.Infrastructure.csproj",
+        "packagesPath": "/home/doc4am/.nuget/packages/",
+        "outputPath": "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Infrastructure/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\mcqui\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/doc4am/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Users\\mcqui\\OneDrive\\Documents\\TRABAJOS C#\\ApiCrossTest\\Api-Cross-test\\userManagement.Domain\\userManagement.Domain.csproj": {
-                "projectPath": "C:\\Users\\mcqui\\OneDrive\\Documents\\TRABAJOS C#\\ApiCrossTest\\Api-Cross-test\\userManagement.Domain\\userManagement.Domain.csproj"
+              "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Domain/userManagement.Domain.csproj": {
+                "projectPath": "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Domain/userManagement.Domain.csproj"
               }
             }
           }
@@ -129,6 +117,16 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.10, )"
+            },
             "Microsoft.Extensions.Configuration": {
               "target": "Package",
               "version": "[9.0.10, )"
@@ -174,7 +172,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Users\\mcqui\\.dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

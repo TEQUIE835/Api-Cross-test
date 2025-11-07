@@ -1,13 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "wIhfhgfEnIs=",
+  "dgSpecHash": "39KDobU+TwA=",
   "success": true,
-  "projectFilePath": "C:\\Users\\mcqui\\OneDrive\\Documents\\TRABAJOS C#\\ApiCrossTest\\Api-Cross-test\\userManagement.Domain\\userManagement.Domain.csproj",
+  "projectFilePath": "/media/doc4am/Lexar/Programacion/Practicas_C#/Api-Cross-test/userManagement.Domain/userManagement.Domain.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\mcqui\\.nuget\\packages\\microsoft.openapi\\1.6.23\\microsoft.openapi.1.6.23.nupkg.sha512",
-    "C:\\Users\\mcqui\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\9.0.0\\swashbuckle.aspnetcore.swagger.9.0.0.nupkg.sha512",
-    "C:\\Users\\mcqui\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\9.0.0\\swashbuckle.aspnetcore.swaggergen.9.0.0.nupkg.sha512",
-    "C:\\Users\\mcqui\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\9.0.0\\swashbuckle.aspnetcore.swaggerui.9.0.0.nupkg.sha512"
+    "/home/doc4am/.nuget/packages/microsoft.openapi/1.6.23/microsoft.openapi.1.6.23.nupkg.sha512",
+    "/home/doc4am/.nuget/packages/swashbuckle.aspnetcore.swagger/9.0.0/swashbuckle.aspnetcore.swagger.9.0.0.nupkg.sha512",
+    "/home/doc4am/.nuget/packages/swashbuckle.aspnetcore.swaggergen/9.0.0/swashbuckle.aspnetcore.swaggergen.9.0.0.nupkg.sha512",
+    "/home/doc4am/.nuget/packages/swashbuckle.aspnetcore.swaggerui/9.0.0/swashbuckle.aspnetcore.swaggerui.9.0.0.nupkg.sha512"
   ],
   "logs": []
 }

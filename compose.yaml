@@ -1,0 +1,10 @@
+﻿services:
+  usermanagement.api:
+    image: usermanagement.api
+    build:
+      context: .
+      dockerfile: userManagement.Api/Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_URLS=http://*:8080
