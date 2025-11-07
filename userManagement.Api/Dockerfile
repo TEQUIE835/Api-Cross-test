@@ -8,6 +8,7 @@ COPY userManagement.Api/*.csproj orderManage.Api/
 COPY userManagement.Application/*.csproj orderManage.Application/
 COPY userManagement.Domain/*.csproj orderManage.Domain/
 COPY UserManagement.Infrastructure/*.csproj orderManage.Infrastructure/
+COPY Certs /app/Certs
 
 RUN dotnet restore userManagement.sln
 
@@ -20,6 +21,10 @@ RUN dotnet publish userManagement.Api/userManagement.Api.csproj -c Release -o /a
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
 WORKDIR /app
 COPY --from=build /app/publish .
+
+ARG MYSQL_CONNECTION_STRING
+ENV ConnectionStrings__Default=$MYSQL_CONNECTION_STRING
+
 
 ENV ASPNETCORE_URLS=http://+:8080
 EXPOSE 8080
