@@ -56,8 +56,8 @@ builder.Services.AddScoped<IUserService, UserService>();
 
 // Configuración de Autenticación y Autorización--------------------------------------------
 
-var key = builder.Configuration["Jwt:Key"];
-var issuer =  builder.Configuration["Jwt:Issuer"];
+var key = Environment.GetEnvironmentVariable("SECRET_KEY") ?? builder.Configuration.GetSection("SecretKey").Value;
+var issuer =  Environment.GetEnvironmentVariable("ISSUER") ?? builder.Configuration.GetSection("Issuer").Value;
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
