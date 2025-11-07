@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "4Xu36GcumYw=",
+  "dgSpecHash": "wIhfhgfEnIs=",
   "success": true,
-  "projectFilePath": "/home/bscharp/Escritorio/Api-Cross-test/userManagement.Domain/userManagement.Domain.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\mcqui\\OneDrive\\Documents\\TRABAJOS C#\\ApiCrossTest\\Api-Cross-test\\userManagement.Domain\\userManagement.Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\mcqui\\.nuget\\packages\\microsoft.openapi\\1.6.23\\microsoft.openapi.1.6.23.nupkg.sha512",
+    "C:\\Users\\mcqui\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\9.0.0\\swashbuckle.aspnetcore.swagger.9.0.0.nupkg.sha512",
+    "C:\\Users\\mcqui\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\9.0.0\\swashbuckle.aspnetcore.swaggergen.9.0.0.nupkg.sha512",
+    "C:\\Users\\mcqui\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\9.0.0\\swashbuckle.aspnetcore.swaggerui.9.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
