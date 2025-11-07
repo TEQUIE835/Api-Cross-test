@@ -166,39 +166,32 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mcqui\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "/home/sneiderlz16/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mcqui\\OneDrive\\Documents\\TRABAJOS C#\\ApiCrossTest\\Api-Cross-test\\userManagement.Application\\userManagement.Application.csproj",
+      "projectUniqueName": "/home/sneiderlz16/Escritorio/Api-Cross-test/userManagement.Application/userManagement.Application.csproj",
       "projectName": "userManagement.Application",
-      "projectPath": "C:\\Users\\mcqui\\OneDrive\\Documents\\TRABAJOS C#\\ApiCrossTest\\Api-Cross-test\\userManagement.Application\\userManagement.Application.csproj",
-      "packagesPath": "C:\\Users\\mcqui\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mcqui\\OneDrive\\Documents\\TRABAJOS C#\\ApiCrossTest\\Api-Cross-test\\userManagement.Application\\obj\\",
+      "projectPath": "/home/sneiderlz16/Escritorio/Api-Cross-test/userManagement.Application/userManagement.Application.csproj",
+      "packagesPath": "/home/sneiderlz16/.nuget/packages/",
+      "outputPath": "/home/sneiderlz16/Escritorio/Api-Cross-test/userManagement.Application/obj/",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\mcqui\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/home/sneiderlz16/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "C:\\Users\\mcqui\\OneDrive\\Documents\\TRABAJOS C#\\ApiCrossTest\\Api-Cross-test\\userManagement.Domain\\userManagement.Domain.csproj": {
-              "projectPath": "C:\\Users\\mcqui\\OneDrive\\Documents\\TRABAJOS C#\\ApiCrossTest\\Api-Cross-test\\userManagement.Domain\\userManagement.Domain.csproj"
+            "/home/sneiderlz16/Escritorio/Api-Cross-test/userManagement.Domain/userManagement.Domain.csproj": {
+              "projectPath": "/home/sneiderlz16/Escritorio/Api-Cross-test/userManagement.Domain/userManagement.Domain.csproj"
             }
           }
         }
@@ -244,7 +237,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Users\\mcqui\\.dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/home/sneiderlz16/.dotnet/sdk/9.0.306/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
