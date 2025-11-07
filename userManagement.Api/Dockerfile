@@ -26,12 +26,12 @@ ARG MYSQL_CONNECTION_STRING
 ENV ConnectionStrings__Default=$MYSQL_CONNECTION_STRING
 
 # Guardar el certificado desde variable de entorno
-ARG MYSQL_CERT
-ENV MYSQL_CERT=$MYSQL_CERT
+ARG MYSQL_CA_PEM
+ENV MYSQL_CA_PEM=$MYSQL_CA_PEM
 
 # Crear el archivo del certificado en tiempo de build
 RUN mkdir -p /app/Certs && \
-    if [ -n "$MYSQL_CERT" ]; then echo "$MYSQL_CERT" > /app/Certs/ca.pem; fi
+    if [ -n "$MYSQL_CA_PEM" ]; then echo "$MYSQL_CA_PEM" > /app/Certs/ca.pem; fi
 
 
 ENV ASPNETCORE_URLS=http://+:8080
