@@ -1,6 +1,8 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.IdentityModel.Tokens;
 using userManagement.Application.Interfaces.Auth;
 using userManagement.Application.Interfaces.Security;
 using userManagement.Application.Interfaces.Students;
@@ -52,10 +54,24 @@ builder.Services.AddScoped<IStudentService, StudentService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 
-
-//builder.Services.AddScoped<IAuthService, AuthService>();
-
 // Configuración de Autenticación y Autorización--------------------------------------------
+
+var key = builder.Configuration["Jwt:Key"];
+var issuer =  builder.Configuration["Jwt:Issuer"];
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new()
+        {
+            ValidateIssuer = true,
+            ValidateAudience = false,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = issuer,
+            IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(key))
+        };
+    });
 
 var app = builder.Build();
 
