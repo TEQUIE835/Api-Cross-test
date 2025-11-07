@@ -20,11 +20,12 @@ public class JwtTokenGenerator : IJwtTokenGenerator
     {
         // 1️⃣ Configuración de JWT desde appsettings o variables de entorno
             var jwtKey = _configuration["Jwt:Key"] 
-                         ?? Environment.GetEnvironmentVariable("JWT_KEY");
+                         ?? Environment.GetEnvironmentVariable("SECRET_KEY");
+            Console.WriteLine($"SECRET_KEY env: {Environment.GetEnvironmentVariable("SECRET_KEY")}");
             var jwtIssuer = _configuration["Jwt:Issuer"]
-                            ?? Environment.GetEnvironmentVariable("JWT_ISSUER");
+                            ?? Environment.GetEnvironmentVariable("ISSUER");
             var jwtAudience = _configuration["Jwt:Audience"]
-                              ?? Environment.GetEnvironmentVariable("JWT_AUDIENCE");
+                              ?? Environment.GetEnvironmentVariable("AUDIENCE");
             var jwtExpiresMinutes = int.TryParse(
                 _configuration["Jwt:ExpiresMinutes"], out var minutes) ? minutes : 60;
 
