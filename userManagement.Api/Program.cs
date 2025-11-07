@@ -23,7 +23,8 @@ builder.Services.AddSwaggerGen();
 // 2. Configuración de Base de Datos
 // Asume que el connection string 'Default' está en appsettings.json
 var certPath = Environment.GetEnvironmentVariable("MYSQL_CA_PATH");
-var connectionString = Environment.GetEnvironmentVariable("MYSQL_CONNECTION_STRING");
+var connectionString = Environment.GetEnvironmentVariable("MYSQL_CONNECTION_STRING")
+    ?? builder.Configuration.GetConnectionString("Default");;
 if (!string.IsNullOrEmpty(certPath))
 {
     connectionString = connectionString.Replace("${HOME}/Certs/ca.pem", certPath);
