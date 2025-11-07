@@ -25,12 +25,14 @@ jobs:
 
       - name: Write MySQL CA certificate
         run: |
-          mkdir -p Certs
-          echo "${{ secrets.MYSQL_CA_CERT }}" > Certs/ca.pem
+          mkdir -p userManagement.Api/Certs
+          echo "${{ secrets.MYSQL_CA_CERT }}" > userManagement.Api/Certs/ca.pem
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
+          context: ./userManagement.Api
+          file: ./userManagement.Api/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/usermanage-api:latest
           build-args: |
