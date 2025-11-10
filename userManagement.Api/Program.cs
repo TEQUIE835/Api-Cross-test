@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.IdentityModel.Tokens;
+using System.Text;
+
 using userManagement.Application.Interfaces.Auth;
 using userManagement.Application.Interfaces.Security;
 using userManagement.Application.Interfaces.Students;
@@ -11,79 +11,119 @@ using userManagement.Application.Services.Auth;
 using userManagement.Application.Services.Security;
 using userManagement.Application.Services.Students;
 using userManagement.Application.Services.Users;
+
 using userManagement.Domain.Interfaces;
 using userManagement.Infrastructure.Persistence;
 using userManagement.Infrastructure.Repository;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// ----------------------------------------------------------------------------
+// Add services to the container
+// ----------------------------------------------------------------------------
 builder.Services.AddControllers();
+
+// ✅ CORS sin restricciones (acepta cualquier origen, header y método)
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy
+            .AllowAnyOrigin()     // Permite cualquier dominio / frontend
+            .AllowAnyMethod()     // Permite cualquier método HTTP: GET, POST, PUT, DELETE
+            .AllowAnyHeader();    // Permite cualquier header, incluido Authorization
+    });
+});
+
+// Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// 2. Configuración de Base de Datos
-// Asume que el connection string 'Default' está en appsettings.json
-// var certPath = "./Certs/ca.pem";
-
-var connectionString = Environment.GetEnvironmentVariable("MYSQL_CONNECTION_STRING")
-    ?? builder.Configuration.GetConnectionString("Default");;
-Console.WriteLine($"🔗 Connection string: {connectionString}");
+// Conexion BD
+var connectionString =
+    builder.Configuration.GetConnectionString("DefaultConnection")
+    ?? Environment.GetEnvironmentVariable("MYSQL_CONNECTION_STRING")
+    ?? "server=localhost;port=3306;database=usersdb;user=app;password=app";
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
-    options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 36)));
+    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
 });
 
-
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
-
-//Inyeccion de dependencias --------------------------------------------------------------
+// DI de servicios y repositorios
 builder.Services.AddHttpContextAccessor();
+
 builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
 builder.Services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
-builder.Services.AddScoped<IAuthService, AuthService>();
-
 builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 
-builder.Services.AddScoped<IStudentsRepository, StudentsRepository>();
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IStudentService, StudentService>();
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IStudentsRepository, StudentsRepository>();
 
-// Configuración de Autenticación y Autorización--------------------------------------------
+// JWT - Authentication / Authorization
+var jwtKey =
+    builder.Configuration["Jwt:Key"] ??
+    builder.Configuration["SecretKey"] ??
+    Environment.GetEnvironmentVariable("SECRET_KEY");
 
-var key = Environment.GetEnvironmentVariable("SECRET_KEY") ?? builder.Configuration.GetSection("SecretKey").Value;
-var issuer =  Environment.GetEnvironmentVariable("ISSUER") ?? builder.Configuration.GetSection("Issuer").Value;
+var jwtIssuer =
+    builder.Configuration["Jwt:Issuer"] ??
+    builder.Configuration["Issuer"] ??
+    Environment.GetEnvironmentVariable("ISSUER");
 
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+var jwtAudience =
+    builder.Configuration["Jwt:Audience"] ??
+    builder.Configuration["Audience"] ??
+    Environment.GetEnvironmentVariable("AUDIENCE");
+
+if (string.IsNullOrWhiteSpace(jwtKey))
+{
+    throw new InvalidOperationException(
+        "JWT Key is not configured. Set Jwt:Key or environment variable SECRET_KEY."
+    );
+}
+
+builder.Services
+    .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
-        options.TokenValidationParameters = new()
+        options.TokenValidationParameters = new TokenValidationParameters
         {
-            ValidateIssuer = true,
-            ValidateAudience = false,
-            ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
-            ValidIssuer = issuer,
-            IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(key))
+            IssuerSigningKey         = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey)),
+            ValidateIssuer           = !string.IsNullOrWhiteSpace(jwtIssuer),
+            ValidIssuer              = jwtIssuer,
+            ValidateAudience         = !string.IsNullOrWhiteSpace(jwtAudience),
+            ValidAudience            = jwtAudience,
+            ValidateLifetime         = true,
+            ClockSkew                = TimeSpan.FromSeconds(30)
         };
     });
 
+builder.Services.AddAuthorization();
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// ----------------------------------------------------------------------------
+// Configure the HTTP request pipeline
+// ----------------------------------------------------------------------------
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
+
+// ✅ Activar CORS permitido para todo el pipeline (IMPORTANT!)
+app.UseCors("AllowAll");
+
+
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

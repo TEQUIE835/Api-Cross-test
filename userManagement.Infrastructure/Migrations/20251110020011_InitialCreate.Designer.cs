@@ -12,7 +12,7 @@ using userManagement.Infrastructure.Persistence;
 namespace userManagement.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20251106124846_InitialCreate")]
+    [Migration("20251110020011_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
