@@ -6,7 +6,7 @@ using userManagement.Domain.Interfaces;
 
 namespace userManagement.Application.Services.Auth;
 
-public sealed class AuthService : IAuthService
+public class AuthService : IAuthService
 {
     private readonly IUserRepository _users;
     private readonly IPasswordHasher _hasher;
@@ -21,17 +21,29 @@ public sealed class AuthService : IAuthService
 
     public async Task<int> RegisterAsync(RegisterRequestDto request)
     {
-        
-        var existing = await _users.GetUserById(request.Username);
-        if (existing is not null)
+        // Normalización básica
+        var username = request.Username.Trim();
+        var email    = request.Email.Trim().ToLowerInvariant();
+
+        // Verificar username único (y opcional: email único si quieres)
+        var existingByUsername = await _users.GetUserByUsername(username);
+        if (existingByUsername is not null)
             throw new InvalidOperationException("Username already exists.");
+
+       
+        var existingByEmail = await _users.GetUserByEmail(email);
+        if (existingByEmail is not null)
+         throw new InvalidOperationException("Email already exists.");
+
+        var allowed = new[] { "User", "Admin" };
+        var role = allowed.Contains(request.Role) ? request.Role : "User";
 
         var user = new User
         {
-            Username = request.Username.Trim(),
-            Email = request.Email.Trim().ToLowerInvariant(),
+            Username     = username,
+            Email        = email,
             PasswordHash = _hasher.Hash(request.Password),
-            Role = "User"
+            Role         = role
         };
 
         await _users.RegisterUser(user);
@@ -40,8 +52,13 @@ public sealed class AuthService : IAuthService
 
     public async Task<LoginResponseDto> LoginAsync(LoginRequestDto request)
     {
-        // Login por Username (si agregas GetByEmail, puedes aceptar email también)
-        var user = await _users.GetUserById(request.UsernameOrEmail);
+        // Login acepta username O email (UsernameOrEmail)
+        var identifier = request.UsernameOrEmail.Trim().ToLowerInvariant();
+
+        User? user = identifier.Contains('@')
+            ? await _users.GetUserByEmail(identifier)
+            : await _users.GetUserByUsername(identifier);
+
         if (user is null)
             throw new UnauthorizedAccessException("Invalid credentials.");
 
@@ -52,10 +69,10 @@ public sealed class AuthService : IAuthService
 
         return new LoginResponseDto
         {
-            Token = token,
+            Token        = token,
             ExpiresAtUtc = expiresAtUtc,
-            Username = user.Username,
-            Role = user.Role
+            Username     = user.Username,
+            Role         = user.Role
         };
     }
 }

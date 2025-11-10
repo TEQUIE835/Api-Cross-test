@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using userManagement.Application.DTOs.Auth;
 using userManagement.Application.Interfaces.Auth;
@@ -6,51 +7,44 @@ namespace userManagement.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class AuthController : ControllerBase
+public sealed class AuthController : ControllerBase
 {
-    private readonly IAuthService _authService;
+    private readonly IAuthService _auth;
 
-    public AuthController(IAuthService authService)
+    public AuthController(IAuthService auth)
     {
-        _authService = authService;
+        _auth = auth;
     }
 
-  
-    /// POST 
+    /// <summary>Registro de usuario.</summary>
     [HttpPost("register")]
-    [ProducesResponseType(StatusCodes.Status201Created)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    [ProducesResponseType(StatusCodes.Status409Conflict)] // Para username ya existente
+    [AllowAnonymous]
     public async Task<IActionResult> Register([FromBody] RegisterRequestDto request)
     {
-        try
-        {
-            var userId = await _authService.RegisterAsync(request);
-            // Retorna 201 Created con la ubicación del nuevo recurso (aunque solo el ID por ahora)
-            return CreatedAtAction(nameof(Register), new { id = userId });
-        }
-        catch (InvalidOperationException ex)
-        {
-            // Atrapa el error de 'Username already exists.'
-            return Conflict(new { message = ex.Message });
-        }
+        // IAuthService.RegisterAsync devuelve el nuevo Id (int)
+        var newId = await _auth.RegisterAsync(request);
+        // 201 Created con Location -> /api/users/{id}
+        return CreatedAtRoute(
+            routeName: "GetUserById",
+            routeValues: new { id = newId },
+            value: new { id = newId }
+        );
     }
 
-  
-    /// POST 
+    /// <summary>Login: devuelve JWT y metadatos.</summary>
     [HttpPost("login")]
-    [ProducesResponseType(typeof(LoginResponseDto), StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status401Unauthorized)] // Para credenciales inválidas
+    [AllowAnonymous]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     public async Task<IActionResult> Login([FromBody] LoginRequestDto request)
     {
         try
         {
-            var response = await _authService.LoginAsync(request);
+            var response = await _auth.LoginAsync(request); // LoginResponseDto
             return Ok(response);
         }
         catch (UnauthorizedAccessException ex)
         {
-            // Atrapa el error de credentials
             return Unauthorized(new { message = ex.Message });
         }
     }

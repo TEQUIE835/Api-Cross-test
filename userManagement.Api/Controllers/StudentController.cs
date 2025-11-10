@@ -5,7 +5,7 @@ using userManagement.Application.Interfaces.Students;
 
 namespace userManagement.Api.Controllers;
 
-
+[Authorize] // Proteger todas las rutas con JWT
 [ApiController]
 [Route("api/[controller]")]
 public class StudentsController : ControllerBase
@@ -17,29 +17,22 @@ public class StudentsController : ControllerBase
         _studentService = studentService;
     }
 
-    
-    /// GET 
+    /// GET /api/students
     [HttpGet]
     public async Task<ActionResult<IEnumerable<StudentDto>>> GetAll()
     {
-        try{
-            var students = await _studentService.GetAllAsync();
-            return Ok(students);
-        }
-        catch ( Exception e){
-            return BadRequest(e.Message);
-        }
+        var list = await _studentService.GetAllAsync();
+        return Ok(list);
     }
 
-    
-    /// GET 
+    /// GET /api/students/{id}
     [HttpGet("{id:int}")]
     public async Task<ActionResult<StudentDto>> GetById(int id)
     {
         try
         {
-            var student = await _studentService.GetByIdAsync(id);
-            return Ok(student);
+            var item = await _studentService.GetByIdAsync(id);
+            return Ok(item);
         }
         catch (KeyNotFoundException)
         {
@@ -47,17 +40,15 @@ public class StudentsController : ControllerBase
         }
     }
 
-    
-    /// POST /api/students - Crea un nuevo estudiante (protegido).
+    /// POST /api/students
     [HttpPost]
-    public async Task<IActionResult> Create([FromBody] CreateStudentDto input)
+    public async Task<ActionResult<object>> Create([FromBody] CreateStudentDto input)
     {
-        var id = await _studentService.CreateAsync(input);
-        return CreatedAtAction(nameof(GetById), new { id }, null);
+        var newId = await _studentService.CreateAsync(input);
+        return CreatedAtAction(nameof(GetById), new { id = newId }, new { id = newId });
     }
 
-    
-    /// PUT /api/students/{id} - Actualiza un estudiante existente (protegido).
+    /// PUT /api/students/{id}
     [HttpPut("{id:int}")]
     public async Task<IActionResult> Update(int id, [FromBody] UpdateStudentDto input)
     {
@@ -72,8 +63,7 @@ public class StudentsController : ControllerBase
         }
     }
 
-  
-    /// DELETE 
+    /// DELETE /api/students/{id}
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> Delete(int id)
     {
@@ -84,8 +74,6 @@ public class StudentsController : ControllerBase
         }
         catch (KeyNotFoundException)
         {
-            // Si el servicio no lanza excepción
-            // Si quieres confirmar la eliminación
             return NotFound();
         }
     }

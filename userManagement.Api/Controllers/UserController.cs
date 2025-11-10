@@ -5,11 +5,10 @@ using userManagement.Application.Interfaces.Users;
 
 namespace userManagement.Api.Controllers;
 
-
-[Authorize] 
+[Authorize] // protegido por JWT
 [ApiController]
 [Route("api/[controller]")]
-public class UsersController : ControllerBase
+public sealed class UsersController : ControllerBase
 {
     private readonly IUserService _userService;
 
@@ -17,19 +16,31 @@ public class UsersController : ControllerBase
     {
         _userService = userService;
     }
-    
-    /// GET /api/users - Lista todos los usuarios (protegido, rol Admin).
+
+    /// <summary>Crea un usuario (solo Admin).</summary>
+    [HttpPost]
+    [Authorize(Roles = "Admin")]
+    public async Task<IActionResult> Create([FromBody] CreateUserDto input)
+    {
+        var newId = await _userService.CreateAsync(input);
+        return CreatedAtRoute(
+            routeName: "GetUserById",
+            routeValues: new { id = newId },
+            value: new { id = newId }
+        );
+    }
+
+    /// <summary>Lista todos los usuarios (solo Admin).</summary>
     [HttpGet]
-    [Authorize(Roles = "Admin")] // Específicamente requiere el rol Admin
+    [Authorize(Roles = "Admin")]
     public async Task<ActionResult<IEnumerable<UserDto>>> GetAll()
     {
         var users = await _userService.GetAllAsync();
         return Ok(users);
     }
 
-    
-    /// GET /api/users/{id} - Obtiene un usuario por ID (protegido).
-    [HttpGet("{id:int}")]
+    /// <summary>Obtiene un usuario por Id. Admin o dueño del recurso (se valida en Application).</summary>
+    [HttpGet("{id:int}", Name = "GetUserById")]
     public async Task<ActionResult<UserDto>> GetById(int id)
     {
         try
@@ -43,13 +54,11 @@ public class UsersController : ControllerBase
         }
         catch (UnauthorizedAccessException)
         {
-            return Forbid(); 
+            return Forbid();
         }
     }
-    
 
-   
-    /// PUT /api/users/{id} - Actualiza un usuario existente (protegido).
+    /// <summary>Actualiza un usuario. Admin o dueño del recurso.</summary>
     [HttpPut("{id:int}")]
     public async Task<IActionResult> Update(int id, [FromBody] UpdateUserDto input)
     {
@@ -64,14 +73,13 @@ public class UsersController : ControllerBase
         }
         catch (UnauthorizedAccessException)
         {
-            return Forbid(); 
+            return Forbid();
         }
     }
 
-  
-    /// DELETE /api/users/{id} - Elimina un usuario (protegido, rol Admin).
+    /// <summary>Elimina un usuario (solo Admin).</summary>
     [HttpDelete("{id:int}")]
-    [Authorize(Roles = "Admin")] 
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Delete(int id)
     {
         try
